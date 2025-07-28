@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springproject
+  datasource:
+    username: postgres
+    password: sa#12753
+    url: jdbc:postgresql://localhost:5432/test_db
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
