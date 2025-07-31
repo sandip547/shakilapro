@@ -1,14 +1,16 @@
 package com.training.springproject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Product {
+    @Id
     private int productId;
     private String productName;
 }
