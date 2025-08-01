@@ -52,5 +52,46 @@ public class ShakilaService {
     //TODO:  controller search according to personId
     //TODO: controller to getListOfPerson
 
+    //Product Class{
+    //
+    //id, name
+    //
+    ////getters
+    ////setters
+    //
+    //NameClass getName(){
+    //
+    //}
+    //}
+    //
+    //NameClass {
+    //
+    //String formatName(){
+    //
+    //}
+    //
+    //}
+    //
+    //list - product1,product2,product3....
+    //
+    //E-  Product/Person/List<Person>
+    //
+    //new Product(1,"Laptop").
+    //
+    //NameClass
+    //  formatName()
+    //
+    //String getProductName(){
+    //
+    //list.get(0).getName().formatName();
+    //
+    //Product p = list.get(0);
+    //NameClass nc = p.getName();
+    //String finalVal = nc.formatName()
+    //
+    //
+    //
+    //}
+
 
 }

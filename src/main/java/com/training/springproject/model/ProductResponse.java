@@ -9,7 +9,7 @@ public class ProductResponse {
     private Product p;
     private HttpStatus httpStatus;
     private Date date;
-
+    String s;
     public Product getP() {
         return p;
     }
