@@ -3,6 +3,7 @@ package com.training.springproject.controller;
 
 import com.training.springproject.ProductName;
 import com.training.springproject.model.Product;
+import com.training.springproject.model.ProductDTO;
 import com.training.springproject.model.ProductResponse;
 import com.training.springproject.service.ShakilaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,18 @@ public class ShakilaController {
     }
 
     @GetMapping("/product/{name}")
-    public ResponseEntity<ProductResponse> getProduct(@PathVariable String name){
-        Product pro = shakilaService.getProduct(name);
-        if(pro.getProductName().equals("testProductFailed")){
-            return new ResponseEntity<>(new ProductResponse(HttpStatus.NOT_FOUND,pro),HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(new ProductResponse(HttpStatus.OK,pro),HttpStatus.OK);
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable String name){
+        ProductDTO pro = shakilaService.getProduct(name);
+//        if(pro.getProductName().equals("testProductFailed")){
+//            return new ResponseEntity<>(new ProductResponse(HttpStatus.NOT_FOUND,pro),HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(new ProductResponse(HttpStatus.OK,pro),HttpStatus.OK);
 
+        return new ResponseEntity<>(pro,HttpStatus.OK);
     }
 
     @PostMapping("/product/addProduct")
-    public Product addProduct(@RequestBody Product product){
+    public ProductDTO addProduct(@RequestBody ProductDTO product){
         return shakilaService.saveProduct(product);
     }
 

@@ -1,0 +1,14 @@
+
+spring:
+  datasource:
+    username: postgres
+    password: sa#12753
+    url: jdbc:postgresql://localhost:5432/test_db
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env,health,info,metrics,beans

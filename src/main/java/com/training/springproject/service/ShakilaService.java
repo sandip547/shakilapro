@@ -1,9 +1,12 @@
 package com.training.springproject.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.training.springproject.ProductName;
 import com.training.springproject.model.Product;
+import com.training.springproject.model.ProductDTO;
 import com.training.springproject.model.ProductResponse;
 import com.training.springproject.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,20 +15,27 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ShakilaService {
+
+    private final ProductRepository productRepository;
+//
+//    ShakilaService(ProductRepository p){
+//        this.productRepository = p;
+//    }
+
     List<Product> li;
 
-    @Autowired
-    ProductRepository productRepository;
-    public ShakilaService(){
-        this.li  = new ArrayList<>();
-    }
+
+
     public Product getName(){
         return new Product(1,"Mobile");
     }
 
-    public Product saveProduct(Product product){
-        productRepository.save(product);
+    public ProductDTO saveProduct(ProductDTO product){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product p = objectMapper.convertValue(product,Product.class);
+        productRepository.save(p);
         return product;
     }
 
@@ -35,7 +45,7 @@ public class ShakilaService {
 
 
 
-    public Product getProduct(String product) {
+    public ProductDTO getProduct(String product) {
 //        List<Product> list = getProductList();
 //        for (Product p: list) {
 //            if (product.equals(p.getProductName())){
@@ -44,8 +54,10 @@ public class ShakilaService {
 //        }
 //        return new Product(1,"testProductFailed");
 //    }
+        ObjectMapper objectMapper = new ObjectMapper();
+        ProductDTO productDTO = objectMapper.convertValue(productRepository.findProductByProductName(product),ProductDTO.class);
 
-        return productRepository.findProductByProductName(product);
+        return productDTO;
     }
 
     //TODO: controller accepts list of person save it to database
